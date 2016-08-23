@@ -4,8 +4,8 @@
   
     
     <entry>
-      <title><![CDATA[大家好]]></title>
-      <url>http://LyricistPKU.github.io/2016/08/23/%E5%A4%A7%E5%AE%B6%E5%A5%BD/</url>
+      <title><![CDATA[HeyHey]]></title>
+      <url>http://LyricistPKU.github.io/2016/08/23/HeyHey/</url>
       <content type="html"><![CDATA[<h1 id="随便写写的哈哈哈哈哈哈哈哈"><a href="#随便写写的哈哈哈哈哈哈哈哈" class="headerlink" title="随便写写的哈哈哈哈哈哈哈哈"></a>随便写写的哈哈哈哈哈哈哈哈</h1><p><img src="http://oav5h17rz.bkt.clouddn.com/example.jpg" alt="gaoxiao"></p>
 <h2 id="有问题反馈"><a href="#有问题反馈" class="headerlink" title="有问题反馈"></a>有问题反馈</h2><p>在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流</p>
 <ul>
@@ -14,7 +14,7 @@
 <li>weibo: <a href="http://weibo.com/lyricistpku" target="_blank" rel="external">@Lyricist勤Coding</a></li>
 <li>github: <a href="https://github.com/LyricistPKU" target="_blank" rel="external">@ihubo</a></li>
 </ul>
-<h2 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ihubo = &#123;</div><div class="line">  nickName  : <span class="string">"LyricistPKU"</span>,</div><div class="line">  site : <span class="string">"https://github.com/LyricistPKU"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lyricist = &#123;</div><div class="line">  nickName  : <span class="string">"LyricistPKU"</span>,</div><div class="line">  site : <span class="string">"https://github.com/LyricistPKU"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     
