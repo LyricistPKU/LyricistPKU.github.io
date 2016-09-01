@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://LyricistPKU.github.io/2016/08/31/CS面试常见问题（持续更新中ToT）/TCP_window.png">
 <meta property="og:image" content="http://LyricistPKU.github.io/2016/08/31/CS面试常见问题（持续更新中ToT）/TCP.png">
 <meta property="og:image" content="http://LyricistPKU.github.io/2016/08/31/CS面试常见问题（持续更新中ToT）/TCPDisconnect.png">
-<meta property="og:updated_time" content="2016-09-01T03:00:01.293Z">
+<meta property="og:updated_time" content="2016-09-01T03:01:33.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS面试常见问题（持续更新中ToT）">
 <meta name="twitter:description" content="程序设计语言1、C++ STLSTL可分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六个部分。
@@ -318,7 +318,7 @@
 <a id="more"></a>
 <h3 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h3><p>关联容器里的值,都按照某种规则(元素值的大小)进行了排序，可遍历;<br>set：集合，<code>关键字都是唯一的</code>，搜索，插入，删除的时间复杂度是O(logn)，可以用迭代器迭代输出（multiset键可以不唯一）<br>常见函数——insert(T)，erase(T)<br>multiset：可以有重复元素，C++11中新增<br>map：映射，按照关键字进行了排序，插入删除搜索的复杂度是O(logn),常用<code>红黑树</code>实现，<code>可以用迭代器遍历按key大小顺序输出所有对</code><br>例———map.insert(map<char*,int>::value_type(“()”, 0));<br>multimap：可重复</char*,int></p>
 <h3 id="无序关联容器"><a href="#无序关联容器" class="headerlink" title="无序关联容器"></a>无序关联容器</h3><p>容器中的值都是不进行排序的，C++11中新增<br>unordered_set：无序集合，hash实现，<code>等值元素唯一</code>，搜索插入删除时间常量<br>unordered_map：无序映射，<code>关键字等值元素唯一</code>，搜索插入删除时间常量<br>unordered_multiset：无序可重复，复杂度常量<br>unordered_multimap：无序可重复，复杂度常量</p>
-<h3 id="容器适配器"><a href="#容器适配器" class="headerlink" title="容器适配器"></a>容器适配器</h3><p>为序列容器提供了不一样的接口<br>stack：push，top，pop(LIFO)<br>queue: push,front,empty,pop(FIFO)<br>priority_queue: 第一个元素总是最大的，可以将任意类型的容器转换为一个优先级的队列，只能访问第一个元素，不能遍历，<code>底层用vector和heap函数实现</code><br>定义：priority_queue<int, vector<int="">, greater<int>&gt; pq;  </int></int,></p>
+<h3 id="容器适配器"><a href="#容器适配器" class="headerlink" title="容器适配器"></a>容器适配器</h3><p>为序列容器提供了不一样的接口<br>stack：push，top，pop(LIFO)<br>queue: push,front,empty,pop(FIFO)<br>priority_queue: 第一个元素总是最大的，可以将任意类型的容器转换为一个优先级的队列，只能访问第一个元素，不能遍历，<code>底层用vector和heap函数实现</code>  </p>
 <h3 id="容器的线程安全性——并不安全"><a href="#容器的线程安全性——并不安全" class="headerlink" title="容器的线程安全性——并不安全"></a>容器的线程安全性——并不安全</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://wlypku.github.io/2016/08/23/STL总结" target="_blank" rel="external">STL总结</a><br><a href="http://www.cnblogs.com/biyeymyhjob/archive/2012/07/22/2603525.html" target="_blank" rel="external">C++ STL一般总结</a><br><a href="http://blog.csdn.net/uestcyao/article/details/21871107" target="_blank" rel="external">C++ STL库的总结以及实现原理</a><br><a href="http://www.jianshu.com/p/809216c9240d" target="_blank" rel="external">map按键/值排序</a>  </p>
 <h2 id="2、C-中的const和static"><a href="#2、C-中的const和static" class="headerlink" title="2、C++ 中的const和static"></a>2、C++ 中的const和static</h2><p>const定义的常量在超出其作用域之后其空间会被释放，而static定义的静态常量在函数执行后不会释放其存储空间。  static表示的是静态的。类的静态成员函数、静态成员变量是和类相关的，而不是和类的具体对象相关的。即使没有具体对象，也能调用类的静态成员函数和成员变量。一般类的静态函数几乎就是一个全局函数，只不过它的作用域限于包含它的文件中。  </p>
 <h4 id="要点："><a href="#要点：" class="headerlink" title="要点："></a>要点：</h4><ol>
