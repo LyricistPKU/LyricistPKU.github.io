@@ -92,16 +92,15 @@
 <meta property="og:site_name" content="Binbin Lyu">
 <meta property="og:description" content="程序设计语言1、C++ STLSTL可分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六个部分。
 序列容器容器里的元素是有位置先后的;array:静态连续数组，大小固定不能改变，支持随机访问、迭代器、判断元素数量等操作vector：动态连续数组，大小可变，使用连续内">
-<meta property="og:image" content="http://LyricistPKU.github.io/CS面试常见问题（持续更新中ToT）/TCP_window.png">
-<meta property="og:image" content="http://LyricistPKU.github.io/TCPConnect.jpg">
-<meta property="og:image" content="http://LyricistPKU.github.io/TCP.png">
-<meta property="og:image" content="http://LyricistPKU.github.io/TCPDisconnect.png">
-<meta property="og:updated_time" content="2016-09-01T02:31:23.582Z">
+<meta property="og:image" content="http://LyricistPKU.github.io/2016/08/31/CS面试常见问题（持续更新中ToT）/TCP_window.png">
+<meta property="og:image" content="http://LyricistPKU.github.io/2016/08/31/CS面试常见问题（持续更新中ToT）/TCP.png">
+<meta property="og:image" content="http://LyricistPKU.github.io/2016/08/31/CS面试常见问题（持续更新中ToT）/TCPDisconnect.png">
+<meta property="og:updated_time" content="2016-09-01T02:39:15.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS面试常见问题（持续更新中ToT）">
 <meta name="twitter:description" content="程序设计语言1、C++ STLSTL可分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六个部分。
 序列容器容器里的元素是有位置先后的;array:静态连续数组，大小固定不能改变，支持随机访问、迭代器、判断元素数量等操作vector：动态连续数组，大小可变，使用连续内">
-<meta name="twitter:image" content="http://LyricistPKU.github.io/CS面试常见问题（持续更新中ToT）/TCP_window.png">
+<meta name="twitter:image" content="http://LyricistPKU.github.io/2016/08/31/CS面试常见问题（持续更新中ToT）/TCP_window.png">
 
 
 
@@ -354,9 +353,7 @@
 <li>一个对象需要另一个对象初始化<br>类中没有声明拷贝构造函数编译器自动调用完成对象之间的<code>位拷贝</code>——位拷贝也称浅拷贝。<br><code>位拷贝存在的问题</code>：A=B，B中变量指针申请了内存，A中该指针指向的就是同一块内存，B中释放后A就成了野指针。<br><code>深拷贝</code>简单理解为：如果一个类拥有资源复制时资源重新分配！(自定义拷贝构造函数中重新分配内存)</li>
 </ol>
 <h2 id="6-C-重载、覆盖、隐藏"><a href="#6-C-重载、覆盖、隐藏" class="headerlink" title="6. C++重载、覆盖、隐藏"></a>6. C++重载、覆盖、隐藏</h2><p>重载：相同范围(<code>同一个类</code>)，函数名字相同，参数不同，virtual可有可无；<br>覆盖：不同范围(<code>派生类与基类</code>)，函数名相同，参数相同，必须有virtual；<br>隐藏：<code>不同范围</code>，派生类函数屏蔽了基类函数；1.函数名相同参数不同，无论是否virtual基类函数都被隐藏；2. 同名同参无virtual也被隐藏。(注意与重载，覆盖的区别)</p>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="1-TCP和UDP概念"><a href="#1-TCP和UDP概念" class="headerlink" title="1. TCP和UDP概念"></a>1. TCP和UDP概念</h2><p>TCP流量控制过程——窗口与滑动窗口(相互确认缓冲区窗口大小，级剩余缓冲区大小) </p>
-
-<p><img src="CS面试常见问题（持续更新中ToT）/TCP_window.png" alt="TCP滑动窗口机制">  </p>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="1-TCP和UDP概念"><a href="#1-TCP和UDP概念" class="headerlink" title="1. TCP和UDP概念"></a>1. TCP和UDP概念</h2><p>TCP流量控制过程——窗口与滑动窗口(相互确认缓冲区窗口大小，级剩余缓冲区大小)         </p>
 <h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ol>
 <li>TCP是面向连接的传输，可以丢包重发，顺序控制；UDP无连接，UDP不提供复杂的控制机制，进程产生的数据直接向目标IP传输</li>
 <li>TCP通过检验和、序列号、确认应答、重发控制、连接管理以及窗口控制等机制实现可靠性传输。  </li>
@@ -373,7 +370,7 @@
 <li>一般交换机不能分割广播域，他所接的网段仍属于同一个广播域；路由器分割了不同的广播域</li>
 <li>路由器有防火墙防止广播风暴</li>
 </ol>
-<h2 id="3-TCP三次握手和四次挥手"><a href="#3-TCP三次握手和四次挥手" class="headerlink" title="3. TCP三次握手和四次挥手"></a>3. TCP三次握手和四次挥手</h2><p><a href="http://www.cnblogs.com/Jessy/p/3535612.html" target="_blank" rel="external">TCP三次握手和四次挥手</a>   </p>
+<h2 id="3-TCP三次握手和四次挥手"><a href="#3-TCP三次握手和四次挥手" class="headerlink" title="3. TCP三次握手和四次挥手"></a>3. TCP三次握手和四次挥手</h2><p><a href="http://www.cnblogs.com/Jessy/p/3535612.html" target="_blank" rel="external">TCP三次握手和四次挥手</a><br><img src="/2016/08/31/CS面试常见问题（持续更新中ToT）/TCP_window.png" alt="TCP滑动窗口机制" title="TCP滑动窗口机制"> </p>
 <h4 id="TCP标志位："><a href="#TCP标志位：" class="headerlink" title="TCP标志位："></a>TCP标志位：</h4><ol>
 <li>SYN(synchronous建立联机)</li>
 <li>ACK(acknowledgement 确认)</li>
@@ -401,14 +398,17 @@
 <h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><ol>
 <li><code>第一次握手：建立连接时，客户端A发送SYN包（SYN=j）到服务器B，并进入SYN_SENT状态，等待服务器B确认</code>  </li>
 <li><code>第二次握手：服务器B收到SYN包，必须确认客户A的SYN（ACK=j+1），同时自己也发送一个SYN包，即SYN+ACK包，此时服务器B进入SYN_RECV状态</code>  </li>
-<li><code>第三次握手：客户端A收到服务器B的SYN＋ACK包，向服务器B发送确认包ACK（ACK=k+1），此包发送完毕，客户端A和服务器B进入ESTABLISHED状态，完成三次握手。客户端与服务器开始传送数据。</code><br>补充：j,k为随机产生的序号，SYN包丢失——超时重传，SYN+ACK包丢失——超时（SYN）重传<br><img src="/TCPConnect.jpg" alt="TCP连接"><br><img src="/TCP.png" alt="TCP状态"></li>
+<li><code>第三次握手：客户端A收到服务器B的SYN＋ACK包，向服务器B发送确认包ACK（ACK=k+1），此包发送完毕，客户端A和服务器B进入ESTABLISHED状态，完成三次握手。客户端与服务器开始传送数据。</code><br>补充：j,k为随机产生的序号，SYN包丢失——超时重传，SYN+ACK包丢失——超时（SYN）重传   
+<img src="/2016/08/31/CS面试常见问题（持续更新中ToT）/TCP.png" alt="TCP状态" title="TCP状态"> 
+</li>
 </ol>
 <h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p>由于TCP连接是全双工的，因此每个方向都必须单独进行关闭。这个原则是当一方完成它的数据发送任务后就能发送一个FIN来终止这个方向的连接。收到一个FIN只意味着这一方向上没有数据流动，一个TCP连接在收到一个FIN后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。  </p>
 <ol>
 <li><code>客户端A发送一个FIN，用来关闭客户A到服务器B的数据传送。</code>  </li>
 <li><code>服务器B收到这个FIN，它发回一个ACK，确认序号为收到的序号加1。和SYN一样，一个FIN将占用一个序号。</code></li>
 <li><code>服务器B关闭与客户端A的连接，发送一个FIN给客户端A</code>  </li>
-<li><code>客户端A发回ACK报文确认，并将确认序号设置为收到序号加1。</code><br><img src="/TCPDisconnect.png" alt="TCP断开">  </li>
+<li><code>客户端A发回ACK报文确认，并将确认序号设置为收到序号加1。</code>  <img src="/2016/08/31/CS面试常见问题（持续更新中ToT）/TCPDisconnect.png" alt="TCP断开" title="TCP断开">  
+</li>
 </ol>
 <h2 id="4-C-Socket编程常用函数"><a href="#4-C-Socket编程常用函数" class="headerlink" title="4. C++ Socket编程常用函数"></a>4. C++ Socket编程常用函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> family, <span class="keyword">int</span> type, <span class="keyword">int</span> protocol)</span></span>;	<span class="comment">//创建套接字(协议族，套接字类型，通信协议)</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">close</span><span class="params">(<span class="keyword">int</span> socksd)</span></span>;	<span class="comment">//关闭</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">bind</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr* addr, <span class="keyword">int</span> sizeofaddr)</span></span>;	<span class="comment">//服务器将所创建的套接字绑定相应的IP和端口号</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">listen</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">int</span> requestnumber)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr* addr, <span class="keyword">int</span> addrlen)</span></span>;	<span class="comment">//TCP客户进程调用该函数来连接服务器</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">newsock</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr* addr, <span class="keyword">int</span>* addrlen)</span></span>;	<span class="comment">//监听成功后转入新的sockect；第一个参数是用于监听的套接字描述符</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">send</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">char</span>* buf, <span class="keyword">int</span> len, <span class="keyword">int</span> flags)</span></span>;	<span class="comment">//描述符，缓冲区，字节数，默认0</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">recv</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">char</span>* buf, <span class="keyword">int</span> len, <span class="keyword">int</span> flags)</span></span>;	<span class="comment">//send和recv用于TCP</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sendto</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">char</span>* buf, <span class="keyword">int</span> buflen, <span class="keyword">int</span> flags, sockaddr* destaddr, <span class="keyword">int</span> addrlen)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">recvfrom</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">char</span>* buf, <span class="keyword">int</span> buflen, <span class="keyword">int</span> flags, sockaddr* destaddr, <span class="keyword">int</span> addrlen)</span></span>;	<span class="comment">//sendto,recvfrom用于UDP</span></div></pre></td></tr></table></figure>
 <p>TCP通信：<br>客户机：socket()-&gt;connect()|established|-&gt;send()/recv()-&gt;close()<br>服务器：socket()-&gt;bind()-&gt;listen()-&gt;accept()|established|-&gt;send()/recv()-&gt;close()<br>UDP通信：<br>客户机：socket()-&gt;sendto()-&gt;recvfrom()-&gt;close()<br>服务器：socket()-&gt;bind()-&gt;recvfrom()-&gt;sendto()-&gt;close()  </p>
