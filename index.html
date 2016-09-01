@@ -308,7 +308,7 @@
 
       
         
-          <h1 id="程序设计语言"><a href="#程序设计语言" class="headerlink" title="程序设计语言"></a>程序设计语言</h1><h2 id="1、C-STL"><a href="#1、C-STL" class="headerlink" title="1、C++ STL"></a>1、C++ STL</h2><p>STL可分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六个部分。</p>
+          <h1 id="程序设计语言"><a href="#程序设计语言" class="headerlink" title="程序设计语言"></a>程序设计语言</h1><h2 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h2><p>STL可分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六个部分。</p>
 <h3 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h3><p>容器里的元素是有位置先后的;<br>array:静态连续数组，大小固定不能改变，支持随机访问、迭代器、判断元素数量等操作<br>vector：动态连续数组，大小可变，使用连续内存，支持随机存取，末端增删性能比中间好<br>常见函数——push_back(T),front(),迭代：vector<int>::iterator<br>deque：双头队列可在头尾部插入删除，数组实现，内存不连续，随机存取和头尾插入删除O(1)，删除任意元素O(n)<br>forward_list：单项列表，<code>不支持随机存取</code>，列表里增删一个元素不会使指向其他元素的迭代器失效，只会使自己的迭代器失效<br>list：双向列表，<code>底层用环形双向链表实现</code>，插入删除元素时间常量，增删移动元素不会使得其他迭代器失效<br>常见函数——push_back(T),push_front(),insert(l.begin(), 4)</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/31/CS面试常见问题（持续更新中ToT）/#more" rel="contents">
