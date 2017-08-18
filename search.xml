@@ -4,175 +4,87 @@
   
     
     <entry>
-      <title><![CDATA[Java面试题长期更新(不懂就要背ToT)]]></title>
-      <url>http://LyricistPKU.github.io/2016/09/19/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0-%E4%B8%8D%E6%87%82%E5%B0%B1%E8%A6%81%E8%83%8CToT/</url>
-      <content type="html"><![CDATA[<h1 id="抽象类与接口的区别"><a href="#抽象类与接口的区别" class="headerlink" title="抽象类与接口的区别"></a>抽象类与接口的区别</h1><p>抽象类：<br>1.抽象类中可以有构造方法<br>2.抽象类中可以存在普通属性、方法和静态属性、方法<br>3.抽象类中可以存在抽象方法<br>4.如果一个类中有一个抽象方法，那么当前类一定是抽象类；抽象类中不一定有抽象方法<br>5.抽象类中的抽象方法，需要有子类实现，如果子类不实现，则子类也需要定义为抽象的<br><a id="more"></a><br>接口：<br>1.接口中只有方法的声明，没有方法体<br>2.接口中只有常量，即使定义变量，在编译的时候都会默认为public static final<br>3.接口的方法都是public<br>4.接口没有构造方法，不能实例化<br>5.接口可以实现多继承<br>6.接口的方法需要有实现类来实现，如果实现类没有实现接口所有方法，则其为抽象类<br><code>注意：Java8开始接口可以有default方法，因此接口中的方法不必须是抽象的</code></p>
-<h1 id="Switch语句参数类型"><a href="#Switch语句参数类型" class="headerlink" title="Switch语句参数类型"></a>Switch语句参数类型</h1><p>switch语句后的控制表达式只能是short、char、int、long整数类型和枚举类型，不能是float，double和boolean类型。<code>String类型是java7开始支持。</code></p>
-<h1 id="Object类的默认方法"><a href="#Object类的默认方法" class="headerlink" title="Object类的默认方法"></a>Object类的默认方法</h1><p>1.getClass()返回 Object的运行时类<br>2.hashCode()返回对象的哈希码值<br>3.equals()返回对象是否相同(在同一个内存地址)<br>4.clone()用于对象的复制<br>5.toString()<br>6.notify()唤醒在此对象监视器上等待的单个线程<br>7.notifyAll()唤醒在此对象监视器上等待的所有线程<br>8.wait()当前线程等待<br>9.finalize()当垃圾回收期确定不存在该对象的更多引用时，由垃圾回收器调用该方法  </p>
-<h1 id="equals，-和hashCode"><a href="#equals，-和hashCode" class="headerlink" title="equals，==和hashCode"></a>equals，==和hashCode</h1><p>==比较两个对象在JVM中的地址，equals()用==实现，但可以被重写</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> (<span class="keyword">this</span> == obj);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>String类中重写equals()——可以用来比较两个字符串的内容是否相同<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object anobj)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> (<span class="keyword">this</span> == anobj)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(anobj <span class="keyword">instanceof</span> String)&#123;</div><div class="line">		String anotherString = (String) anobj;</div><div class="line">		<span class="keyword">int</span> n = value.length;</div><div class="line">		<span class="keyword">if</span>(n == anotherString.value.length)&#123;</div><div class="line">			<span class="keyword">char</span> v1[] = value;</div><div class="line">			<span class="keyword">char</span> v2[] = anotherString.value;</div><div class="line">			<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">			<span class="keyword">while</span>(n-- != <span class="number">0</span>)&#123;</div><div class="line">				<span class="keyword">if</span>(v1[i] != v2[i]) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">				i++;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>hashCode()不被重写默认返回32JVM中的内存地址，hashCode相同equals不一定相同，equals相同hashCode一定相同  </p>
+      <title><![CDATA[Interview Common Questions]]></title>
+      <url>http://LyricistPKU.github.io/2017/08/18/Interview-Common-Questions/</url>
+      <content type="html"><![CDATA[<p>Anything about the interview preparing. Still Updating…<br><a id="more"></a></p>
+<h1 id="C-面试题"><a href="#C-面试题" class="headerlink" title="C++面试题"></a>C++面试题</h1><h2 id="语法基础"><a href="#语法基础" class="headerlink" title="语法基础"></a>语法基础</h2><h3 id="声明与定义"><a href="#声明与定义" class="headerlink" title="声明与定义"></a>声明与定义</h3><p>变量的定义：为变量分配存储空间（还可以有初始值），定义只能一次</p>
+<p>变量的声明：向编译器表明变量的类型和名字，声明可以多次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">extern int i;	//变量声明未定义</div><div class="line">int i;	//变量声明且定义，未初始化，对于全局变量编译器会赋初值，局部变量未初始化会有意想不到的结果</div><div class="line">//static变量不论是全局还是局部都会有初值</div><div class="line">void fun();		//函数声明</div><div class="line">void fun()&#123;&#125;	//函数定义</div><div class="line">//模板函数声明和定义必须同时在.h文件当中，函数被使用时编译器需要在编译阶段进行模板类型检查而不是在链接阶段找到函数的定义</div></pre></td></tr></table></figure>
+<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><h3 id="C-常见关键字"><a href="#C-常见关键字" class="headerlink" title="C++常见关键字"></a>C++常见关键字</h3><ol>
+<li><p>inline：把函数定义放在符号表中，调用时可以直接替换（注意：inline放在函数声明前无用，必须放在函数定义前）；类中定义的函数编译器在调用处可以自动执行inline的功能，类外定义的（类）函数使用inline发挥该功能</p>
+</li>
+<li><p>typedef与#define：#define定义的宏在编译预处理时被简单替换，不做正确性检查，编译已展开的源程序时报错；typedef给类型定义别名，编译时检查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">typedef int* ptr;</div><div class="line">const ptr p;	//p不可更改，但是p指向的内容可以</div><div class="line">#define PTR int*</div><div class="line">const PTR p;	//p可以更改，但是p指向的内容不可以</div></pre></td></tr></table></figure>
+</li>
+<li><p>static：(a)类外static：函数内static变量只分配一次内存；模块内static变量之内被模块内函数访问（文件作用域）；模块内的static函数只能被模块内的其他函数调用；(b)类内static：类内的static变量对整个类来说只有一份拷贝；类内的static函数为整个类所有，不接受this指针，因此只能访问static成员变量</p>
+</li>
+<li><p>const：(a)类外const：可以修饰指针本身或指向对象不可变；函数声明中形参用const，函数内不能改变；对于不想改变的变量可以用const修饰，通常需要初始化；(b)类内const：const成员函数不改变成员变量；返回const值的成员函数，其返回值不能为等式左值；<br><strong>static和const变量初始化问题：类中的static变量初始化要在类外，类名::变量名=值；类中的const变量要在构造函数初始化列表中初始化；static const变量可以在类内或类外初始化；static全局或局部变量没有显示初始化会被编译器自动赋初值。</strong></p>
+</li>
+<li><p>sizeof与strlen：sizeof是运算符（参数可以是类型或者函数名），对于静态分配的数组返回编译期决定的大小；strlen是函数（char*作为参数），数到’\0’为止</p>
+</li>
+<li><p>malloc和new：malloc是库函数，动态分配内存，范围void<em>，无类型信息，free释放；new是运算符，根据编译期类型信息调用相应的构造函数，delete释放；<br><em>*野指针：动态分配的内存空间被释放后指针如果不赋值为NULL就会造成不可预知的程序结果，该指针为野指针</em></em></p>
+</li>
+<li><p>explicit：修饰只有一个参数的类构造函数（或者后面参数都有默认值），调用该构造函数必须显示转换<br><a href="http://www.cnblogs.com/ymy124/p/3632634.html" target="_blank" rel="external">C++ explicit关键字详解</a></p>
+</li>
+<li><p>volatile: volatile定义的变量在使用处禁止编译器的优化，每次使用都要从对应的内存地址读取<br><a href="http://blog.csdn.net/whatday/article/details/52511071" target="_blank" rel="external">C/C++中volatile关键字详解</a></p>
+</li>
+<li><p>struct和class：默认权限不同。struct是public但是class中是private；struct不能定义函数；C++中的struct对C进行了扩充，可以有构造函数，也可以加权限修饰符；C++中class默认private继承，struct默认public继承</p>
+</li>
+<li><p>restrict：如果用const变量的地址赋值非const指针，const的作用就会失去，如果用restrict修饰指针，该指针指向的内存空间只能通过该指针进行访问。</p>
+</li>
+</ol>
+<h2 id="面向对象相关"><a href="#面向对象相关" class="headerlink" title="面向对象相关"></a>面向对象相关</h2><h2 id="STL总结"><a href="#STL总结" class="headerlink" title="STL总结"></a>STL总结</h2><p>STL可分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六个部分</p>
+<ol>
+<li>序列容器：容器里的元素是有位置先后的</li>
+</ol>
+<p>(a)array：静态连续，大小不变，支持随机访问，迭代器；</p>
+<p>(b)vector：动态连续，大小可变，支持随机存取；</p>
+<p>(c)deque：双头队列，内存不连续；</p>
+<p>(d)forward_list：单项列表，不支持随机存取，增删元素指向其他元素的迭代器不失效；</p>
+<p>(e)list：双向列表，增删元素指向其他元素的迭代器不失效；</p>
+<ol>
+<li>关联容器：关联容器里的值,都按照某种规则(元素值的大小)进行了排序，可遍历</li>
+</ol>
+<p>(a)set: 集合，关键字唯一，O(logn)，迭代器顺序输出</p>
+<p>(b)multiset：有重复元素，C++11新增</p>
+<p>(c)map：红黑树，可用迭代器按key的顺序输出</p>
+<p>(d)multimap：key可重复</p>
+<ol>
+<li>无序关联容器：容器中的值都是不进行排序的，C++11中新增</li>
+</ol>
+<p>(a)unordered_set：无序集合，hash实现，等值元素唯一，搜索插入删除时间常量</p>
+<p>(b)unordered_map：无序映射，关键字等值元素唯一，搜索插入删除时间常量</p>
+<p>(c)unordered_multiset：无序可重复，复杂度常量</p>
+<p>(d)unordered_multimap：无序可重复，复杂度常量</p>
+<ol>
+<li>容器适配器：为序列容器提供了不一样的接口</li>
+</ol>
+<p>(a)stack：LIFO</p>
+<p>(b)queue：FIFO</p>
+<p>(d)priority_queue：底层用vector和heap函数实现，第一个元素总是最大(小)，不能遍历只能访问第一个值</p>
+<h2 id="编译链接和程序运行内存模型"><a href="#编译链接和程序运行内存模型" class="headerlink" title="编译链接和程序运行内存模型"></a>编译链接和程序运行内存模型</h2><ol>
+<li>编译与链接</li>
+</ol>
+<p>预处理（宏的替换，删除注释，递归展开#include，处理#ifdef）-&gt;编译（词法分析，语法分析，语义分析，优化，目标代码生成）-&gt;生成目标文件（ELF）-&gt;链接</p>
+<img src="/2017/08/18/Interview-Common-Questions/elf.png" alt="ELF结构" title="ELF结构">
+<ol>
+<li>C++程序内存模型</li>
+</ol>
+<p>堆，（共享库.so的存储映射区），栈，全局/静态存储区（读写段，.bss放未初始化，.data放初始化），只读段（.init，.text代码段，.rodata常量），内核虚拟存储器（对用户代码不可见，系统调用）</p>
+<p><a href="http://www.cnblogs.com/Stultz-Lee/p/6751522.html" target="_blank" rel="external">C和C++内存模型</a></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>C++11新增的特性</li>
+</ol>
+<p>常用：auto自动类型推导，decltype推导类型，nullptr(NULL可以转成0，nullptr不可以)，序列for循环（有点像python），lambda表达式，更多初始化方法</p>
+<p><a href="http://www.cnblogs.com/pzhfei/archive/2013/03/02/CPP_new_feature.html" target="_blank" rel="external">30分钟了解C++11新特性</a></p>
+<p><a href="http://www.cnblogs.com/pzhfei/archive/2013/03/02/CPP_new_feature.html#section_3.1" target="_blank" rel="external">C++11新特性</a></p>
+<h2 id="欢迎交流"><a href="#欢迎交流" class="headerlink" title="欢迎交流"></a>欢迎交流</h2><p>博客中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流</p>
+<ul>
+<li>邮件(lyubinbinpku#163.com, 把#换成@)</li>
+<li>QQ: 1257508426</li>
+<li>weibo: <a href="http://weibo.com/lyricistpku" target="_blank" rel="external">@Lyricist勤Coding</a></li>
+</ul>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[CS面试常见问题（持续更新中ToT）]]></title>
-      <url>http://LyricistPKU.github.io/2016/08/31/CS%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%ADToT%EF%BC%89/</url>
-      <content type="html"><![CDATA[<h1 id="程序设计语言"><a href="#程序设计语言" class="headerlink" title="程序设计语言"></a>程序设计语言</h1><h2 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h2><p>STL可分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六个部分。</p>
-<h3 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h3><p>容器里的元素是有位置先后的;<br>array:静态连续数组，大小固定不能改变，支持随机访问、迭代器、判断元素数量等操作<br>vector：动态连续数组，大小可变，使用连续内存，支持随机存取，末端增删性能比中间好<br>常见函数——push_back(T),front(),迭代：vector<int>::iterator<br>deque：双头队列可在头尾部插入删除，数组实现，内存不连续，随机存取和头尾插入删除O(1)，删除任意元素O(n)<br>forward_list：单项列表，<code>不支持随机存取</code>，列表里增删一个元素不会使指向其他元素的迭代器失效，只会使自己的迭代器失效<br>list：双向列表，<code>底层用环形双向链表实现</code>，插入删除元素时间常量，增删移动元素不会使得其他迭代器失效<br>常见函数——push_back(T),push_front(),insert(l.begin(), 4)</int></p>
-<a id="more"></a>
-<h3 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h3><p>关联容器里的值,都按照某种规则(元素值的大小)进行了排序，可遍历;<br>set：集合，<code>关键字都是唯一的</code>，搜索，插入，删除的时间复杂度是O(logn)，可以用迭代器迭代输出（multiset键可以不唯一）<br>常见函数——insert(T)，erase(T)<br>multiset：可以有重复元素，C++11中新增<br>map：映射，按照关键字进行了排序，插入删除搜索的复杂度是O(logn),常用<code>红黑树</code>实现，<code>可以用迭代器遍历按key大小顺序输出所有对</code><br>例———map.insert(map<char*,int>::value_type(“()”, 0));<br>multimap：可重复</char*,int></p>
-<h3 id="无序关联容器"><a href="#无序关联容器" class="headerlink" title="无序关联容器"></a>无序关联容器</h3><p>容器中的值都是不进行排序的，C++11中新增<br>unordered_set：无序集合，hash实现，<code>等值元素唯一</code>，搜索插入删除时间常量<br>unordered_map：无序映射，<code>关键字等值元素唯一</code>，搜索插入删除时间常量<br>unordered_multiset：无序可重复，复杂度常量<br>unordered_multimap：无序可重复，复杂度常量</p>
-<h3 id="容器适配器"><a href="#容器适配器" class="headerlink" title="容器适配器"></a>容器适配器</h3><p>为序列容器提供了不一样的接口<br>stack：push，top，pop(LIFO)<br>queue: push,front,empty,pop(FIFO)<br>priority_queue: 第一个元素总是最大的，可以将任意类型的容器转换为一个优先级的队列，只能访问第一个元素，不能遍历，<code>底层用vector和heap函数实现</code>  </p>
-<h3 id="容器的线程安全性——并不安全"><a href="#容器的线程安全性——并不安全" class="headerlink" title="容器的线程安全性——并不安全"></a>容器的线程安全性——并不安全</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://wlypku.github.io/2016/08/23/STL总结" target="_blank" rel="external">STL总结</a><br><a href="http://www.cnblogs.com/biyeymyhjob/archive/2012/07/22/2603525.html" target="_blank" rel="external">C++ STL一般总结</a><br><a href="http://blog.csdn.net/uestcyao/article/details/21871107" target="_blank" rel="external">C++ STL库的总结以及实现原理</a><br><a href="http://www.jianshu.com/p/809216c9240d" target="_blank" rel="external">map按键/值排序</a>  </p>
-<h2 id="C-中的const和static"><a href="#C-中的const和static" class="headerlink" title="C++ 中的const和static"></a>C++ 中的const和static</h2><p>const定义的常量在超出其作用域之后其空间会被释放，而static定义的静态常量在函数执行后不会释放其存储空间。  static表示的是静态的。类的静态成员函数、静态成员变量是和类相关的，而不是和类的具体对象相关的。即使没有具体对象，也能调用类的静态成员函数和成员变量。一般类的静态函数几乎就是一个全局函数，只不过它的作用域限于包含它的文件中。  </p>
-<p>要点：</p>
-<ol>
-<li>static成员变量不能在类的内部初始化，<code>必须定义在类的外部</code></li>
-<li>const成员变量也不能在类的内部初始化，必须且<code>只能通过构造函数初始化列表进行</code>（因为初始化列表执行完毕相当于const成员变量已经有了初始值，再在构造函数内赋值是错误的），<code>且必须有构造函数</code></li>
-<li><code>const只在生存期内是常量，不同的对象的const值可以不一样</code></li>
-<li>要想在整个类中都是常量，用static const(和const static等价)</li>
-<li>类中const方法不对任何类成员变量做修改</li>
-<li>区分int const <em>A和int</em> const A</li>
-<li>const变量默认是非extern的不能在其他文件中用extern调用</li>
-<li>static（类外）变量具有文件生命周期，是全局的</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Test&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	Test():a(<span class="number">0</span>)&#123;&#125;<span class="comment">//const变量要在构造函数列表进行初始化</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">	<span class="keyword">const</span> <span class="keyword">int</span> a;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> b;</div><div class="line">	<span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">int</span> c;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> Test::b = <span class="number">0</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> Test::c = <span class="number">0</span>;	<span class="comment">//const不能省，static能省略</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="C-中的字节对齐"><a href="#C-中的字节对齐" class="headerlink" title="C++中的字节对齐"></a>C++中的字节对齐</h2><p>例题：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">union</span>&#123;</div><div class="line">	<span class="keyword">long</span> i;</div><div class="line">	<span class="keyword">int</span> k[<span class="number">5</span>];</div><div class="line">	<span class="keyword">char</span> c;</div><div class="line">&#125;DATE;</div><div class="line"><span class="keyword">struct</span> data&#123;</div><div class="line">	<span class="keyword">int</span> cat;</div><div class="line">	DATE cow;</div><div class="line">	<span class="keyword">double</span> dog;</div><div class="line">&#125;too;</div><div class="line">DATE max;</div><div class="line">&#125;</div><div class="line"><span class="built_in">printf</span>(%d<span class="string">", sizeof(too) + sizeof(max));</span></div></pre></td></tr></table></figure></p>
-<p>计算结果为52；  </p>
-<p>C++字节对齐一般规则</p>
-<ol>
-<li>结构体的大小等于结构体内最大成员大小的整数倍；</li>
-<li>结构体内的成员的首地址相对于结构体首地址的偏移量是其类型大小的整数倍，比如说double型成员相对于结构体的首地址的地址偏移量应该是8的倍数；</li>
-<li>为了满足规则1和2编译器会在结构体成员之后进行字节填充！</li>
-</ol>
-<h2 id="虚函数（动态联编）与虚拟继承"><a href="#虚函数（动态联编）与虚拟继承" class="headerlink" title="虚函数（动态联编）与虚拟继承"></a>虚函数（动态联编）与虚拟继承</h2><p>概念：<br>覆盖——所访问的对象由指针(或引用)的类型所决定，将派生类对象地址复制给基类指针所调用的函数是基类的同名成员函数<br>虚函数——所访问的对象由指针(或引用)所指向的对象类型决定，指向基类访问基类虚函数，指向派生类访问派生类虚函数  </p>
-<p>C++多态的三种形式</p>
-<ol>
-<li>CBase* p = &ODerrived;（此处p不能访问派生类中有而基类中没有的成员变量，这样相当于是在访问其他人的空间）</li>
-<li>CBase&amp; r = ODerrived;</li>
-<li>派生类对象中访问Base类中调用了虚函数成员函数的成员函数，那么所调用的虚函数是Derrive中所定义的</li>
-</ol>
-<h3 id="动态联编"><a href="#动态联编" class="headerlink" title="动态联编"></a>动态联编</h3><p>一条语句在编译时无法确定调用哪个函数，运行到该语句时才确定调用哪个函数<br>实现：每个有虚函数的类都有一个虚函数表(sizeof会多4)，调用时每次在虚函数表中查找对应虚函数的地址<br>注意：Base中虚函数private，Derived中public，Base*p=&amp;d，p调用虚函数编译出错，即使Derived中该函数是public的。反之能正确调用<br><code>析构函数</code>中调用虚函数调用的是自己的，因此通过基类指针删除派生类对象时只能调用基类的析构函数。<code>有虚函数的类最好把析构函数也声明为虚函数，但构造函数不能是虚函数</code>。</p>
-<h3 id="虚拟继承"><a href="#虚拟继承" class="headerlink" title="虚拟继承"></a>虚拟继承</h3><p>解决多重继承的问题，B1，B2继承了A，D继承B1，B2就会出现两次A，可把B1，B2变为虚拟继承<br><code>要点</code>：<br>虚拟继承类对象访问基类对象成员时要通过虚函数指针寻址；<br>虚拟继承类对象不保存基类对象拷贝，多出一个指向基类子对象的指针。  </p>
-<h2 id="C-的深拷贝与浅拷贝"><a href="#C-的深拷贝与浅拷贝" class="headerlink" title="C++的深拷贝与浅拷贝"></a>C++的深拷贝与浅拷贝</h2><p>拷贝构造函数的调用时机</p>
-<ol>
-<li>一个对象以值传递的方式传入函数体</li>
-<li>一个对象以值传递的方式从函数返回</li>
-<li>一个对象需要另一个对象初始化<br>类中没有声明拷贝构造函数编译器自动调用完成对象之间的<code>位拷贝</code>——位拷贝也称浅拷贝。<br><code>位拷贝存在的问题</code>：A=B，B中变量指针申请了内存，A中该指针指向的就是同一块内存，B中释放后A就成了野指针。<br><code>深拷贝</code>简单理解为：如果一个类拥有资源复制时资源重新分配！(自定义拷贝构造函数中重新分配内存)</li>
-</ol>
-<h2 id="C-重载、覆盖、隐藏"><a href="#C-重载、覆盖、隐藏" class="headerlink" title="C++重载、覆盖、隐藏"></a>C++重载、覆盖、隐藏</h2><p>重载：相同范围(<code>同一个类</code>)，函数名字相同，参数不同，virtual可有可无；<br>覆盖：不同范围(<code>派生类与基类</code>)，函数名相同，参数相同，必须有virtual；<br>隐藏：<code>不同范围</code>，派生类函数屏蔽了基类函数；1.函数名相同参数不同，无论是否virtual基类函数都被隐藏；2. 同名同参无virtual也被隐藏。(注意与重载，覆盖的区别)</p>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="TCP和UDP概念"><a href="#TCP和UDP概念" class="headerlink" title="TCP和UDP概念"></a>TCP和UDP概念</h2><p>TCP流量控制过程——窗口与滑动窗口(相互确认缓冲区窗口大小，级剩余缓冲区大小)      </p>
-<p>区别</p>
-<ol>
-<li>TCP是面向连接的传输，可以丢包重发，顺序控制；UDP无连接，UDP不提供复杂的控制机制，进程产生的数据直接向目标IP传输</li>
-<li>TCP通过检验和、序列号、确认应答、重发控制、连接管理以及窗口控制等机制实现可靠性传输。  </li>
-<li>TCP面向字节流，UDP面向报文</li>
-<li>TCP是一对一，UDP可以一对多</li>
-<li>TCP首部开销比UDP大</li>
-<li>TCP的逻辑通信信道是全双工的可靠信道，UDP则是不可靠信道</li>
-<li>UDP常常用于广播等追求时效性的场景<br>补充1：全双工指同时两边互发<br>补充2：计算机网络分层——应用层（应用层报文），传输层（TCP/UDP报文段），网络层（IP数据报），数据链路层（数据帧），物理层（比特流）</li>
-</ol>
-<h2 id="计算机网络设备——集线器，交换机，路由器。。。"><a href="#计算机网络设备——集线器，交换机，路由器。。。" class="headerlink" title="计算机网络设备——集线器，交换机，路由器。。。"></a>计算机网络设备——集线器，交换机，路由器。。。</h2><p>路由器工作在<code>网络层</code>上，能够连接不同类型的网络，能够选择数据的传输路径；<br>交换机工作在<code>数据链路层</code>，能够识别MAC地址<br>集线器工作在<code>物理层</code>，简单的数据传送  </p>
-<p>交换机和路由器有什么区别  </p>
-<ol>
-<li>工作层次不同，前者是数据链路层，后者是网络层</li>
-<li>数据转发所依据的对象不同，前者依据MAC地址，后者依据IP地址</li>
-<li>一般交换机不能分割广播域，他所接的网段仍属于同一个广播域；路由器分割了不同的广播域</li>
-<li>路由器有防火墙防止广播风暴</li>
-</ol>
-<h2 id="TCP三次握手和四次挥手"><a href="#TCP三次握手和四次挥手" class="headerlink" title="TCP三次握手和四次挥手"></a>TCP三次握手和四次挥手</h2><p><a href="http://www.cnblogs.com/Jessy/p/3535612.html" target="_blank" rel="external">TCP三次握手和四次挥手</a><br><img src="/2016/08/31/CS面试常见问题（持续更新中ToT）/TCP_window.png" alt="TCP滑动窗口机制" title="TCP滑动窗口机制"> </p>
-<p>TCP标志位：</p>
-<ol>
-<li>SYN(synchronous建立联机)</li>
-<li>ACK(acknowledgement 确认)</li>
-<li>PSH(push传送)</li>
-<li>FIN(finish结束)</li>
-<li>RST(reset重置)</li>
-<li>URG(urgent紧急)</li>
-<li>Sequence number(顺序号码)</li>
-<li>Acknowledge number(确认号码</li>
-</ol>
-<p>客户端TCP状态迁移：CLOSED-&gt;SYN_SENT-&gt;ESTABLISHED-&gt;FIN_WAIT_1-&gt;FIN_WAIT_2-&gt;TIME_WAIT-&gt;CLOSED<br>服务器TCP状态迁移：CLOSED-&gt;LISTEN-&gt;SYN_RECEIVED-&gt;ESTABLISHED-&gt;CLOSE_WAIT-&gt;LAST_ACK-&gt;CLOSED  </p>
-<p>各状态含义：</p>
-<ol>
-<li>LISTEN - 侦听来自远方TCP端口的连接请求； </li>
-<li>SYN-SENT -在发送连接请求后等待匹配的连接请求； </li>
-<li>SYN-RECEIVED - 在收到和发送一个连接请求后等待对连接请求的确认； </li>
-<li>ESTABLISHED- 代表一个打开的连接，数据可以传送给用户； </li>
-<li>FIN-WAIT-1 - 等待远程TCP的连接中断请求，或先前的连接中断请求的确认；</li>
-<li>FIN-WAIT-2 - 从远程TCP等待连接中断请求； </li>
-<li>CLOSE-WAIT - 等待从本地用户发来的连接中断请求； </li>
-<li>CLOSING - 等待远程TCP对连接中断的确认； </li>
-<li>LAST-ACK - 等待原来发向远程TCP的连接中断请求的确认； </li>
-<li>TIME-WAIT -等待足够的时间以确保远程TCP接收到连接中断请求的确认； </li>
-<li>CLOSED - 没有任何连接状态；</li>
-</ol>
-<h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><ol>
-<li><code>第一次握手：建立连接时，客户端A发送SYN包（SYN=j）到服务器B，并进入SYN_SENT状态，等待服务器B确认</code>  </li>
-<li><code>第二次握手：服务器B收到SYN包，必须确认客户A的SYN（ACK=j+1），同时自己也发送一个SYN包，即SYN+ACK包，此时服务器B进入SYN_RECV状态</code>  </li>
-<li><code>第三次握手：客户端A收到服务器B的SYN＋ACK包，向服务器B发送确认包ACK（ACK=k+1），此包发送完毕，客户端A和服务器B进入ESTABLISHED状态，完成三次握手。客户端与服务器开始传送数据。</code><br>补充：j,k为随机产生的序号，SYN包丢失——超时重传，SYN+ACK包丢失——超时（SYN）重传   
-<img src="/2016/08/31/CS面试常见问题（持续更新中ToT）/TCP.png" alt="TCP状态" title="TCP状态"> 
-</li>
-</ol>
-<h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p>由于TCP连接是全双工的，因此每个方向都必须单独进行关闭。这个原则是当一方完成它的数据发送任务后就能发送一个FIN来终止这个方向的连接。收到一个FIN只意味着这一方向上没有数据流动，一个TCP连接在收到一个FIN后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。  </p>
-<ol>
-<li><code>客户端A发送一个FIN，用来关闭客户A到服务器B的数据传送。</code>  </li>
-<li><code>服务器B收到这个FIN，它发回一个ACK，确认序号为收到的序号加1。和SYN一样，一个FIN将占用一个序号。</code></li>
-<li><code>服务器B关闭与客户端A的连接，发送一个FIN给客户端A</code>  </li>
-<li><code>客户端A发回ACK报文确认，并将确认序号设置为收到序号加1。</code>  <img src="/2016/08/31/CS面试常见问题（持续更新中ToT）/TCPDisconnect.png" alt="TCP断开" title="TCP断开">  
-</li>
-</ol>
-<h2 id="C-Socket编程常用函数"><a href="#C-Socket编程常用函数" class="headerlink" title="C++ Socket编程常用函数"></a>C++ Socket编程常用函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> family, <span class="keyword">int</span> type, <span class="keyword">int</span> protocol)</span></span>;	<span class="comment">//创建套接字(协议族，套接字类型，通信协议)</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">close</span><span class="params">(<span class="keyword">int</span> socksd)</span></span>;	<span class="comment">//关闭</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">bind</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr* addr, <span class="keyword">int</span> sizeofaddr)</span></span>;	<span class="comment">//服务器将所创建的套接字绑定相应的IP和端口号</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">listen</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">int</span> requestnumber)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr* addr, <span class="keyword">int</span> addrlen)</span></span>;	<span class="comment">//TCP客户进程调用该函数来连接服务器</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">newsock</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr* addr, <span class="keyword">int</span>* addrlen)</span></span>;	<span class="comment">//监听成功后转入新的sockect；第一个参数是用于监听的套接字描述符</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">send</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">char</span>* buf, <span class="keyword">int</span> len, <span class="keyword">int</span> flags)</span></span>;	<span class="comment">//描述符，缓冲区，字节数，默认0</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">recv</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">char</span>* buf, <span class="keyword">int</span> len, <span class="keyword">int</span> flags)</span></span>;	<span class="comment">//send和recv用于TCP</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sendto</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">char</span>* buf, <span class="keyword">int</span> buflen, <span class="keyword">int</span> flags, sockaddr* destaddr, <span class="keyword">int</span> addrlen)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">recvfrom</span><span class="params">(<span class="keyword">int</span> socksd, <span class="keyword">char</span>* buf, <span class="keyword">int</span> buflen, <span class="keyword">int</span> flags, sockaddr* destaddr, <span class="keyword">int</span> addrlen)</span></span>;	<span class="comment">//sendto,recvfrom用于UDP</span></div></pre></td></tr></table></figure>
-<p>TCP通信：<br>客户机：socket()-&gt;connect()|established|-&gt;send()/recv()-&gt;close()<br>服务器：socket()-&gt;bind()-&gt;listen()-&gt;accept()|established|-&gt;send()/recv()-&gt;close()<br>UDP通信：<br>客户机：socket()-&gt;sendto()-&gt;recvfrom()-&gt;close()<br>服务器：socket()-&gt;bind()-&gt;recvfrom()-&gt;sendto()-&gt;close()  </p>
-<h1 id="操作系统概念"><a href="#操作系统概念" class="headerlink" title="操作系统概念"></a>操作系统概念</h1><h2 id="进程与线程的概念以及通信"><a href="#进程与线程的概念以及通信" class="headerlink" title="进程与线程的概念以及通信"></a>进程与线程的概念以及通信</h2><p><a href="http://blog.csdn.net/zhangyuehuan/article/details/22421827" target="_blank" rel="external">进程与线程常用问题</a>  </p>
-<h3 id="进程概念"><a href="#进程概念" class="headerlink" title="进程概念"></a>进程概念</h3><p>进程是具有独立功能的程序关于某个数据集合上的一次运行活动，是系统进行资源分配和调度的独立单位（PCB纪录：进程描述信息，进程控制信息，所拥有的资源和使用情况，CPU现场信息）；进程的三种状态：运行，就绪，等待(等待某一事件)；<br>进程操作：</p>
-<ol>
-<li>创建：fork/exec</li>
-<li>撤销：exit</li>
-<li>阻塞：wait</li>
-</ol>
-<h3 id="线程概念"><a href="#线程概念" class="headerlink" title="线程概念"></a>线程概念</h3><p>进程中的一个运行实体，是CPU的调度单位，有时将线程成为轻量级进程</p>
-<p>线程与进程的区别</p>
-<ol>
-<li>进程相互独立，同一进程的各线程之间共享</li>
-<li>进程间通信IPC(管道，信号，Socket，信号量等等)；线程间通信可用全局变量(同步互斥手段)，不需要通过内核</li>
-<li>调度和切换的开销不同<br>Java实现——继承Thread类，实现Runnable接口(再new Thread),synchronized修饰需要同步的方法以及同步语句块  </li>
-</ol>
-<h3 id="进程的同步与互斥"><a href="#进程的同步与互斥" class="headerlink" title="进程的同步与互斥"></a>进程的同步与互斥</h3><p>互斥的问题来源：并发<br>同步：进程之间需要相互合作，时序上有先后要求(一个进程等待另一个进程的消息就进入阻塞态————生产者与消费者问题)<br><img src="/2016/08/31/CS面试常见问题（持续更新中ToT）/synchronize.png" alt="生产者消费者问题" title="生产者消费者问题"><br>注意：当消费者判断count = 0在进入sleep之前被切换生产者的wakeup是空操作，程序出现错误<br>PV信号量操作：<code>一种经典的进程同步机制，均为原语，信号量代表资源的数量</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> smaphore&#123;</div><div class="line">	<span class="keyword">int</span> count;</div><div class="line">	queueType <span class="built_in">queue</span>;</div><div class="line">&#125;</div><div class="line">smaphore s;</div><div class="line">P(s)&#123;</div><div class="line">	s.count--;</div><div class="line">	<span class="keyword">if</span>(s.count &lt; <span class="number">0</span>)&#123;</div><div class="line">		进程进入阻塞状态；</div><div class="line">		插入s.<span class="built_in">queue</span>尾部；</div><div class="line">		重新调度；</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">V(s)&#123;</div><div class="line">	s.count++;</div><div class="line">	<span class="keyword">if</span>(s.count &lt;= <span class="number">0</span>)&#123;</div><div class="line">		唤醒s.<span class="built_in">queue</span>中等待的第一个进程；</div><div class="line">		改变其状态为就绪并插入就绪队列；</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>用PV信号量解决生产者消费者问题：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100 <span class="comment">//缓冲区个数</span></span></div><div class="line">tyoedef <span class="keyword">int</span> semaphore;</div><div class="line">semaphore mutex = <span class="number">1</span>;</div><div class="line">semaphore empty = N;	<span class="comment">//空的个数</span></div><div class="line">semaphore full = <span class="number">0</span>;		<span class="comment">//满的个数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> item;</div><div class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">		item = produce_item();</div><div class="line">		P(&amp;empty);</div><div class="line">		P(&amp;mutex);</div><div class="line">		insert_item(item);</div><div class="line">		V(&amp;mutex);</div><div class="line">		V(&amp;full);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> item;</div><div class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">		P(&amp;full);</div><div class="line">		P(&amp;mutex);</div><div class="line">		remove_item();</div><div class="line">		V(&amp;mutex);</div><div class="line">		V(&amp;empty);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><code>注意两个P颠倒会死锁，两个V无所谓</code>  </p>
-<p>互斥概念：<br>临界资源：系统中某些资源一次只允许一个进程使用<br>临界区：各个进程中对某个临界资源实时操作的程序片段（进程互斥的软件解法Dekker，Peterson，硬件接法中断屏蔽，TSL指令…）<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Dekker解法</span></div><div class="line">P：</div><div class="line">	...</div><div class="line">	pturn = <span class="literal">true</span>;	<span class="comment">//pturn初值是false</span></div><div class="line">	<span class="keyword">while</span>(qturn)&#123;</div><div class="line">		<span class="keyword">if</span>(turn == <span class="number">2</span>)&#123;</div><div class="line">			pturn = <span class="literal">false</span>;</div><div class="line">			<span class="keyword">while</span>(turn == <span class="number">2</span>);</div><div class="line">			pturn = <span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	...	<span class="comment">//临界区</span></div><div class="line">	turn = <span class="number">2</span>;	</div><div class="line">	pturn = <span class="literal">false</span>;	</div><div class="line">	...</div><div class="line">Q:</div><div class="line">	qturn = <span class="literal">true</span>;	<span class="comment">//pturn初值是false</span></div><div class="line">	<span class="keyword">while</span>(pturn)&#123;</div><div class="line">		<span class="keyword">if</span>(turn == <span class="number">1</span>)&#123;</div><div class="line">			qturn = <span class="literal">false</span>;</div><div class="line">			<span class="keyword">while</span>(turn == <span class="number">1</span>);</div><div class="line">			qturn = <span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	...	<span class="comment">//临界区</span></div><div class="line">	turn = <span class="number">1</span>;	</div><div class="line">	qturn = <span class="literal">false</span>;	</div><div class="line">	...</div></pre></td></tr></table></figure></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 2 	<span class="comment">//进程的个数</span></span></div><div class="line"></div><div class="line"><span class="keyword">int</span> turn;</div><div class="line"><span class="keyword">int</span> interested[N];	<span class="comment">//兴趣组，初始都为FALSE</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">enter_region</span><span class="params">(<span class="keyword">int</span> process)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> other - <span class="number">1</span> - process;</div><div class="line">	interested[process] = TRUE;</div><div class="line">	turn = process;</div><div class="line">	<span class="keyword">while</span>(turn = process &amp;&amp; interested[other] = TRUE);	<span class="comment">//循环</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">leave_region</span><span class="params">(<span class="keyword">int</span> process)</span></span>&#123;</div><div class="line">	interested[process] = FALSE;</div><div class="line">&#125;</div><div class="line">进程i：</div><div class="line">	...</div><div class="line">	enter_region(i);</div><div class="line">	临界区</div><div class="line">	leave_region(i);</div></pre></td></tr></table></figure>
-<p><code>PV操作也可以解决互斥问题，信号量代表临界区的准入</code>：<br>设置信号量mutex；进入临界区之前P(mutex),临界区之后V(mutex)；</p>
-<h3 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h3><p>一个特殊模块，由关于共享资源的数据结构和一组过程组成；<br>进程只能通过调用管程中的过程来间接地访问管程中的数据结构。</p>
-<h3 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h3><p>消息传递(send,receive原语，也是由PV操作实现)，共享内存，管道（一个缓冲传输介质）</p>
-<h3 id="线程间通信"><a href="#线程间通信" class="headerlink" title="线程间通信"></a>线程间通信</h3><p>可以通过全局变量，同步互斥的信号量操作类似于进程间通信</p>
-<h1 id="简单Linux-Shell-amp-SQL"><a href="#简单Linux-Shell-amp-SQL" class="headerlink" title="简单Linux Shell &amp; SQL"></a>简单Linux Shell &amp; SQL</h1><h2 id="Linux-Shell"><a href="#Linux-Shell" class="headerlink" title="Linux Shell"></a>Linux Shell</h2><h3 id="awk使用"><a href="#awk使用" class="headerlink" title="awk使用"></a>awk使用</h3><p><img src="https://wlypku.github.io/2016/08/30/Linux%E5%B8%B8%E8%A7%81%E6%96%87%E5%AD%97%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/#more" alt="参考链接"><br>awk中的条件语句跟C相似，’commands’可以采用’/Regular-Expression/BEGIN{}{}END{}’的结构<br>awk部分内置变量</p>
-<ol>
-<li>ARGC 命令行参数个数</li>
-<li>ARGV 命令行参数排列</li>
-<li>FILENAME awk浏览的文件名</li>
-<li>FNR 浏览的文件记录数</li>
-<li>NF 浏览记录的域的个数</li>
-<li>NR 已读的记录数</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">awk [-F filed-seperator] &apos;commands&apos; input-file(s)</div><div class="line">awk -f program-file file...</div><div class="line">#将program-file里的awk语句逐一对file执行</div><div class="line">#RE写在//之间</div></pre></td></tr></table></figure>
-<h4 id="打印一个文件的大小"><a href="#打印一个文件的大小" class="headerlink" title="打印一个文件的大小"></a>打印一个文件的大小</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -b filename | awk &apos;&#123;print($1/1024)&#125;&apos;</div></pre></td></tr></table></figure>
-<h4 id="打印最近登录的5个账号"><a href="#打印最近登录的5个账号" class="headerlink" title="打印最近登录的5个账号"></a>打印最近登录的5个账号</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">last -n 5 | awk -F &apos;:&apos; &apos;&#123;print $1&#125;&apos;</div></pre></td></tr></table></figure>
-<h4 id="统计某一文件夹下的文件字节数"><a href="#统计某一文件夹下的文件字节数" class="headerlink" title="统计某一文件夹下的文件字节数"></a>统计某一文件夹下的文件字节数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls- l | awk &apos;BEGIN&#123;size = 0;&#125;&#123;size += $5;&#125;END&#123;print size&#125;&apos;</div></pre></td></tr></table></figure>
-<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><ol>
-<li>行首定位符”^”</li>
-<li>行尾定位符”$”</li>
-<li>单个字母匹配符”.”</li>
-<li>“*”表示前一字符出现任意次(包括0次)</li>
-<li>[]字符匹配集([a-f],[0-9])</li>
-<li>[^]字符不匹配集</li>
-<li>“+”前一字符至少出现一次</li>
-<li>“?”前一字符出现0次或1次</li>
-</ol>
-<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h1 id="算法题"><a href="#算法题" class="headerlink" title="算法题"></a>算法题</h1>]]></content>
     </entry>
     
     <entry>

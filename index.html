@@ -258,8 +258,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/19/Java面试题长期更新-不懂就要背ToT/" itemprop="url">
-                  Java面试题长期更新(不懂就要背ToT)
+                <a class="post-title-link" href="/2017/08/18/Interview-Common-Questions/" itemprop="url">
+                  Interview Common Questions
                 </a>
               
             
@@ -272,8 +272,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-19T09:12:54+08:00" content="2016-09-19">
-              2016-09-19
+            <time itemprop="dateCreated" datetime="2017-08-18T11:55:58+08:00" content="2017-08-18">
+              2017-08-18
             </time>
           </span>
 
@@ -283,8 +283,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/19/Java面试题长期更新-不懂就要背ToT/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/19/Java面试题长期更新-不懂就要背ToT/" itemprop="commentsCount"></span>
+                <a href="/2017/08/18/Interview-Common-Questions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/18/Interview-Common-Questions/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -308,113 +308,9 @@
 
       
         
-          <h1 id="抽象类与接口的区别"><a href="#抽象类与接口的区别" class="headerlink" title="抽象类与接口的区别"></a>抽象类与接口的区别</h1><p>抽象类：<br>1.抽象类中可以有构造方法<br>2.抽象类中可以存在普通属性、方法和静态属性、方法<br>3.抽象类中可以存在抽象方法<br>4.如果一个类中有一个抽象方法，那么当前类一定是抽象类；抽象类中不一定有抽象方法<br>5.抽象类中的抽象方法，需要有子类实现，如果子类不实现，则子类也需要定义为抽象的<br>
+          <p>Anything about the interview preparing. Still Updating…<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/19/Java面试题长期更新-不懂就要背ToT/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/31/CS面试常见问题（持续更新中ToT）/" itemprop="url">
-                  CS面试常见问题（持续更新中ToT）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-31T20:06:04+08:00" content="2016-08-31">
-              2016-08-31
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/31/CS面试常见问题（持续更新中ToT）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/31/CS面试常见问题（持续更新中ToT）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="程序设计语言"><a href="#程序设计语言" class="headerlink" title="程序设计语言"></a>程序设计语言</h1><h2 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h2><p>STL可分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六个部分。</p>
-<h3 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h3><p>容器里的元素是有位置先后的;<br>array:静态连续数组，大小固定不能改变，支持随机访问、迭代器、判断元素数量等操作<br>vector：动态连续数组，大小可变，使用连续内存，支持随机存取，末端增删性能比中间好<br>常见函数——push_back(T),front(),迭代：vector<int>::iterator<br>deque：双头队列可在头尾部插入删除，数组实现，内存不连续，随机存取和头尾插入删除O(1)，删除任意元素O(n)<br>forward_list：单项列表，<code>不支持随机存取</code>，列表里增删一个元素不会使指向其他元素的迭代器失效，只会使自己的迭代器失效<br>list：双向列表，<code>底层用环形双向链表实现</code>，插入删除元素时间常量，增删移动元素不会使得其他迭代器失效<br>常见函数——push_back(T),push_front(),insert(l.begin(), 4)</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/31/CS面试常见问题（持续更新中ToT）/#more" rel="contents">
+            <a class="btn" href="/2017/08/18/Interview-Common-Questions/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -693,7 +589,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -769,7 +665,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
