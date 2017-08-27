@@ -26,7 +26,7 @@
 </li>
 <li>const：(a)类外const：可以修饰指针本身或指向对象不可变；函数声明中形参用const，函数内不能改变；对于不想改变的变量可以用const修饰，通常需要初始化；(b)类内const：const成员函数不改变成员变量；返回const值的成员函数，其返回值不能为等式左值；<br><strong>static和const变量初始化问题：类中的static变量初始化要在类外，类名::变量名=值；类中的const变量要在构造函数初始化列表中初始化；static const变量可以在类内或类外初始化；static全局或局部变量没有显示初始化会被编译器自动赋初值。</strong></li>
 <li>sizeof与strlen：sizeof是运算符（参数可以是类型或者函数名），对于静态分配的数组返回编译期决定的大小；strlen是函数（char*作为参数），数到’\0’为止</li>
-<li>malloc和new：malloc是库函数，动态分配内存，范围void<em>，无类型信息，free释放；new是运算符，根据编译期类型信息调用相应的构造函数，delete释放；<br><em>*野指针：动态分配的内存空间被释放后指针如果不赋值为NULL就会造成不可预知的程序结果，该指针为野指针</em></em></li>
+<li>malloc和new：malloc是库函数，动态分配内存，范围void<em>，无类型信息，free释放；new是运算符，根据编译期类型信息调用相应的构造函数，delete释放；new出来的对象用delete释放不会调用相应的析构函数。<br><em>*野指针：动态分配的内存空间被释放后指针如果不赋值为NULL就会造成不可预知的程序结果，该指针为野指针</em></em></li>
 <li>explicit：修饰只有一个参数的类构造函数（或者后面参数都有默认值），调用该构造函数必须显示转换</li>
 </ol>
 <p><a href="http://www.cnblogs.com/ymy124/p/3632634.html" target="_blank" rel="external">C++ explicit关键字详解</a></p>
@@ -37,9 +37,14 @@
 <ol>
 <li>struct和class：默认权限不同。struct是public但是class中是private；struct不能定义函数；C++中的struct对C进行了扩充，可以有构造函数，也可以加权限修饰符；C++中class默认private继承，struct默认public继承</li>
 <li>restrict：如果用const变量的地址赋值非const指针，const的作用就会失去，如果用restrict修饰指针，该指针指向的内存空间只能通过该指针进行访问。</li>
+<li>#ifdef，#endif条件编译</li>
 </ol>
 <h2 id="面向对象相关"><a href="#面向对象相关" class="headerlink" title="面向对象相关"></a>面向对象相关</h2><ol>
 <li>虚函数：拥有虚函数的类对象都有一个指向其虚函数表的指针；如果是多继承（父类都定义有虚函数），对象中会有对个虚函数表指针<br><a href="http://blog.csdn.net/qq_26437925/article/details/63251184" target="_blank" rel="external">C语言实现多态</a></li>
+</ol>
+<h2 id="C-类型转换"><a href="#C-类型转换" class="headerlink" title="C++类型转换"></a>C++类型转换</h2><ol>
+<li>隐式转换：基本数据类型间的转换；</li>
+<li>显示转换：<br>static_cast &lt; type-id &gt; ( expression )：向上转型安全，向下不安全；void指针转其他类型；消除隐式转型的歧义<br>dynamic_cast &lt; type-id &gt; ( expression )：向下转型成功则返回指针有效<br>reinpreter_cast<type-id> (expression)：指针与整数相互转<br>const_cast<type_id> (expression)：常量指针转非常量指针<br><a href="http://www.cnblogs.com/chio/archive/2007/07/18/822389.html" target="_blank" rel="external">C++类型转换</a></type_id></type-id></li>
 </ol>
 <h2 id="STL总结"><a href="#STL总结" class="headerlink" title="STL总结"></a>STL总结</h2><p>STL可分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六个部分。</p>
 <p>序列容器：容器里的元素是有位置先后的<br>(a)array：静态连续，大小不变，支持随机访问，迭代器；<br>(b)vector：动态连续，大小可变，支持随机存取；<br>(c)deque：双头队列，内存不连续；<br>(d)forward_list：单项列表，不支持随机存取，增删元素指向其他元素的迭代器不失效；<br>(e)list：双向列表，增删元素指向其他元素的迭代器不失效；</p>
