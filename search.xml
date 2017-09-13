@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Interview Common Questions]]></title>
       <url>http://LyricistPKU.github.io/2017/08/18/Interview-Common-Questions/</url>
-      <content type="html"><![CDATA[<p>Anything about the interview preparing. Still Updating…<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<p>Something about the interview preparing. Still Updating…<br><a id="more"></a></p>
 <h1 id="C-面试题"><a href="#C-面试题" class="headerlink" title="C++面试题"></a>C++面试题</h1><h2 id="语法基础"><a href="#语法基础" class="headerlink" title="语法基础"></a>语法基础</h2><h3 id="声明与定义"><a href="#声明与定义" class="headerlink" title="声明与定义"></a>声明与定义</h3><p>变量的定义：为变量分配存储空间（还可以有初始值），定义只能一次<br>变量的声明：向编译器表明变量的类型和名字，声明可以多次<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">extern int i;	//变量声明未定义</div><div class="line">int i;	//变量声明且定义，未初始化，对于全局变量编译器会赋初值，局部变量未初始化会有意想不到的结果</div><div class="line">//static变量不论是全局还是局部都会有初值</div><div class="line">void fun();		//函数声明</div><div class="line">void fun()&#123;&#125;	//函数定义</div><div class="line">//模板函数声明和定义必须同时在.h文件当中，函数被使用时编译器需要在编译阶段进行模板类型检查而不是在链接阶段找到函数的定义</div></pre></td></tr></table></figure></p>
 <h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><ol>
 <li>模板的特化（如果Equal函数对于float和double类型的执行需要特殊处理，就必须特化这两个类型）</li>
@@ -82,16 +82,44 @@
 <p><a href="http://www.cnblogs.com/zhguang/p/3257367.html#introduction" target="_blank" rel="external">Java 内存区域和GC机制</a></p>
 <h2 id="面向对象相关概念"><a href="#面向对象相关概念" class="headerlink" title="面向对象相关概念"></a>面向对象相关概念</h2><p>向上转型：不能调用子类中有的父类中没有的；除了private类型其他成员都转成父类中的<br>向下转型：直接父类向下转型编译时通过，运行时出错；<br>重载：类中方法同名不同参不同返回类型<br>重写：多态；子类重写父类同名方法；private方法和static方法没有多态；所有private方法默认是final的<br>接口：域隐式为static final，方法默认public；可以实现多继承<br>内部类：定义放在另一个类的内部，能访问外围类的所有成员<br>匿名类：返回值返回时定义类型<br>嵌套类：static内部类，内部类不依赖于外部类存在<br>泛型：&lt;? extends T&gt;包括T在内的任何T的子类；&lt;? super T&gt;包括T在内的任何T的父类；</p>
 <h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>==：基本类型比较数值，对象比较地址<br>equals：不能用于数据类型，为重写比较对象类型，一般Java类都会重写equals<br>hashcode：对地址进行hash，但是会有冲突<br>final：(a)final数据：基本类型值不变，一般类型表示指针不知指向别的对象但不保证对象的值不改变，final数组也可修改；final形参表示不能在函数体中改变引用指向的对象（b)final方法不能被覆盖，private方法在向上转型后不能被调用(c)final类不能被继承<br>instanceof：判断是否是继承关系<br>static：成员函数不能用this指针；static不修饰构造函数，函数参数；static修饰字段加载时初始化；static方法和成员属于整个类<br>volatile：保证变量在每次使用时从主存中获得最新的值，并不保证同步</p>
-<h2 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h2><p>Collection(List, Set, Queue)的基类<br>Collections提供一些API<br>List：LinkedList,ArrayList<br>Set：HashSet,TreeSet<br>Queue：Queue,PriorityQueue<br>Map：HashMap,LinkedHashMap,TreeMap<br>同步容器：vector，stack，HashTable，成员函数synchronize实现</p>
+<h2 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h2><p>Collection(List, Set, Queue)的基类<br>Collections提供一些API<br>List：LinkedList,ArrayList<br>Set：HashSet,TreeSet<br>Queue：Queue,PriorityQueue<br>Map：HashMap,LinkedHashMap,TreeMap<br>Map遍历：</p>
+<ol>
+<li>keySet()<br>Iterator it = map.keySet().iterator();<br>while(it.hasNext()){<br>Object key = it.next();<br>System.out.println(map.get(key));<br>}</li>
+<li>entrySet()<br>Iterator it = map.entrySet().iterator();<br>while(it.hasNext()){<br>Entry e =(Entry) it.next();<br>System.out.println(“键”+e.getKey () + “的值为” + e.getValue());<br>}<br>同步容器：vector，stack，HashTable,concurrentHashMap，成员函数synchronize实现<br>Iterator:Iterator it = arr.iterator();<br>while(it.hasNext()){ object o =it.next(); …}<br>Collections类和Arrays类：</li>
+<li>Arrays.asList(数组对象)  //此静态方法用于将Array转化为List类型对象。常常用于List类型对象的初始化中。</li>
+<li>Collection.addAll(Collection对象,数组对象或可变参数列表 ) //次静态方法用于向一个已经存在的Collection中拼接数据<br>Comparable与Comparator：</li>
+<li>Comparable是接口，重写int compareTo(className obj)，实现的类可以直接用Collections.sort排序</li>
+<li>Comparator是外部比较器接口，待比较的类传入模板，重写int compare(className obj1, className obj2);Collections.sort排序时传入一个new Comparator<t>对象）<br>返回正数，0（相等），负数</t></li>
+</ol>
+<img src="/2017/08/18/Interview-Common-Questions/stl.png" alt="Java持有对象" title="Java持有对象">
 <h2 id="Java多线程"><a href="#Java多线程" class="headerlink" title="Java多线程"></a>Java多线程</h2><ol>
 <li>implements Runable；重写run()，生成Runnable对象传入Thread Constructor，调用.start（）</li>
 <li>extends Thread；重写run()，直接生成Thread对象</li>
 <li>synchronized方法调用时，改对象的其他synchronized方法调用要等其结束</li>
-<li>synchronized static可以控制类范围内对static数据的并发访问</li>
+<li>synchronized static可以控制类范围内对static数据的并发访问,不同对象之间可以同步</li>
+<li>代码块同步synchronized(this)</li>
 <li>ThreadLocal为每一线程维护一组本地变量</li>
 <li>Thread类sleep(),yield();Object类wait(),notify(),notifyAll()</li>
+<li>ThreadPool固定数量的线程处理任务队列</li>
 </ol>
 <p><a href="http://www.cnblogs.com/wxd0108/p/5479442.html" target="_blank" rel="external">Java多线程详解</a></p>
+<h2 id="Java锁"><a href="#Java锁" class="headerlink" title="Java锁"></a>Java锁</h2><p>自旋锁的简单实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class Lock&#123;</div><div class="line">    private boolean isLocked = fasle;</div><div class="line">    public synchronized void lock() throws InterruptedException&#123;</div><div class="line">        while(isLocked)&#123;</div><div class="line">            wait();</div><div class="line">        &#125;</div><div class="line">        isLocked = true;</div><div class="line">    &#125;</div><div class="line">    public synchronized void unlock()&#123;</div><div class="line">        isLocked = false;</div><div class="line">        notify();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当外部方法加锁，外部方法调用试图加锁的内部方法时，不可重入锁会产生阻塞<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class reentrantLock&#123;</div><div class="line">    boolean isLocked = false;</div><div class="line">    Thread lockedBy = null;</div><div class="line">    int lockedCount = 0;</div><div class="line"></div><div class="line">    public synchronized void lock() throws InterruptedException&#123;</div><div class="line">        Thread callingThread = Thread.currentThread();</div><div class="line">        while(isLocked &amp;&amp; lockedBy != callingThread)&#123;</div><div class="line">            wait();</div><div class="line">        &#125;</div><div class="line">        isLocked = true;</div><div class="line">        lockedCount++;</div><div class="line">        lockedBy = callingThread;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public synchronized void unlock()&#123;</div><div class="line">        if(Thread.currentThread() == this.lockedBy) lockedCount--;</div><div class="line">        if(lockedCount == 0)&#123;</div><div class="line">            isLocked = false;</div><div class="line">            notify();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Java锁的分类：</p>
+<ol>
+<li>公平锁（ReentrantLock构造函数可以指定是否公平，按锁的申请顺序分配）/非公平锁（synchronized不公平，优先级反转，饥饿现象）；</li>
+<li>可重入锁</li>
+<li>独享锁（只能被一个线程持有，ReentrantLock）/共享锁（ReadWriteLock，读锁是共享锁，写锁是独享锁）</li>
+<li><p>互斥锁（ReentrantLock），读写锁（ReadWriteLock）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">myLock.readLock().lock();</div><div class="line">...</div><div class="line">myLock.readLock().unlock();</div><div class="line">myLock.writeLock().lock();</div><div class="line">...</div><div class="line">myLock.writeLock().unlock();</div></pre></td></tr></table></figure>
+</li>
+<li><p>悲观锁认为对于同一个数据的并发操作，一定是会发生修改的，哪怕没有修改，也会认为修改。因此对于同一个数据的并发操作，悲观锁采取加锁的形式。悲观的认为，不加锁的并发操作一定会出问题。<br>乐观锁则认为对于同一个数据的并发操作，是不会发生修改的。在更新数据的时候，会采用尝试更新，不断重新的方式更新数据。乐观的认为，不加锁的并发操作是没有事情的。</p>
+</li>
+<li>分段锁：ConcurrentHashMap</li>
+<li>自旋锁</li>
+<li>偏向锁是指一段同步代码一直被一个线程所访问，那么该线程会自动获取锁。降低获取锁的代价。<br>轻量级锁是指当锁是偏向锁的时候，被另一个线程所访问，偏向锁就会升级为轻量级锁，其他线程会通过自旋的形式尝试获取锁，不会阻塞，提高性能。<br>重量级锁是指当锁为轻量级锁的时候，另一个线程虽然是自旋，但自旋不会一直持续下去，当自旋一定次数的时候，还没有获取到锁，就会进入阻塞，该锁膨胀为重量级锁。重量级锁会让其他申请的线程进入阻塞，性能降低。</li>
+</ol>
+<p><a href="http://www.cnblogs.com/qifengshi/p/6831055.html" target="_blank" rel="external">Java锁的分类</a></p>
 <h2 id="Java反射"><a href="#Java反射" class="headerlink" title="Java反射"></a>Java反射</h2><p>每个类被编译后都会产生一个Class对象，在.class文件中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; obj = null;</div><div class="line">obj = Class.forName(&quot;XXX&quot;);</div><div class="line">obj = new ClassName().getClass();</div><div class="line">obj = ClassName.class;</div><div class="line">//直接通过无参构造函数构造</div><div class="line">obj = (ClassName)classObj.newInstance();</div><div class="line">//获取类型信息</div><div class="line">Construnctor&lt;?&gt; cons[] = classObj.getConstructors();</div><div class="line">//getInterfaces(),SuperClass(),DeclaredFields()....</div><div class="line">Method m = clssObj.getMethod(&quot;XXX&quot;);</div></pre></td></tr></table></figure></p>
 <h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2><p>equals(),finalize(),getClass(),hashCode(),toString(),notify(),notifyAll(),wait();</p>
 <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>元注解：@target,@Retention,@Documented,@Inherited<br>注解解释器：用反射getAnnotations()；</p>
